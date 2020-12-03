@@ -12,4 +12,4 @@ PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
     validates :username
     
   end
-  # 追加しなかったらリファクタリング
+  
