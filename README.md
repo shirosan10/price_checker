@@ -65,7 +65,7 @@
 | price              | integer    | null: false                   |
 | store_name         | integer    | null: false                   |
 | daytime            | date       | null: false                   |
-
+| note               | text       | null: false
 ### Association
 
 - has_one :stores
