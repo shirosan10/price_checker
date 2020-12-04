@@ -36,7 +36,6 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
-      
     end
 
     context '空欄以外が原因で登録できない場合' do
@@ -83,8 +82,6 @@ RSpec.describe User, type: :model do
           expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
         end
       end
-
-      
     end
   end
 end
