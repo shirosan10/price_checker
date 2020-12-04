@@ -1,0 +1,47 @@
+<%# スマホ対応実装後修正下部広告部分 %>
+<div class='ad-footer-contents'>
+  <p class='ad-footer-explain'>
+    だれでもかんたん、アプリを使って自分だけの価格比較表を作ろう！
+  </p>
+  <h2 class='ad-footer-title'>
+    今すぐ無料会員登録をしよう！
+  </h2>
+  <%= link_to '新規登録', "#", class: "sign-up" %>
+  <%# <div class='store-btn'> %>
+    <%# <%= link_to image_tag("#", class:"apple-btn"), "#" %>
+    <%# <%= link_to image_tag("dl-android.png", class:"google-btn"), "#" %>
+  <%# </div> %>
+  <%# スマホ対応実装後修正/下部広告部分 %>
+</div>
+
+
+<div class='footer'>
+  <div class='footer-contents'>
+    <div class='pc-details'>
+      <h2 class='footer-content-head'>PRICE／CHECKERについて</h2>
+      <ul>
+        <li><%= link_to '会社概要（運営会社)', "#", class: "footer-link" %></li>
+        <li><%= link_to 'プライバシーポリシー', "#", class: "footer-link" %></li>
+        <li><%= link_to 'PRICE／CHECKER利用規約', "#", class: "footer-link" %></li>
+        <li><%= link_to 'ポイントに関する特約', "#", class: "footer-link" %></li>
+      </ul>
+    </div>
+    <div class='pc-details'>
+      <h2 class='footer-content-head'>PRICE／CHECKERを見る</h2>
+      <ul>
+        <li><%= link_to 'カテゴリー一覧', "#", class: "footer-link" %></li>
+        <li><%= link_to 'ブランド一覧', "#", class: "footer-link" %></li>
+      </ul>
+    </div>
+    <div class='pc-details'>
+      <h2 class='footer-content-head'>PRICE／CHECKERについて</h2>
+      <ul>
+        <li><%= link_to 'PRICE／CHECKERガイド', "#", class: "footer-link" %></li>
+        <li><%= link_to 'PRICE／CHECKERロゴ利用ガイドライン', "#", class: "footer-link" %></li>
+        <li><%= link_to 'お知らせ', "#", class: "footer-link" %></li>
+      </ul>
+    </div>
+  </div>
+  <%= link_to image_tag("pc-logo-white.png", class:"logo-white"), "#" %>
+  <p>© PRICE／CHECKER</p>
+</div>
