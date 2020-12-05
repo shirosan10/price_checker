@@ -1,14 +1,15 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :category
+
+
   belongs_to :user
   has_one_attaced :image
 
-  validates :user,           presence: true
-  validates :title,           presence: true
-  validates :note,           presence: true
-  validates :jan_code,           presence: true
-  validates :model_num,           presence: true
-  validates :store_name,           presence: true
-  validates :daytime,           presence: true
-  validates :price,           presence: true
-  
+  #空の投稿を保存できないようにする
+  validates :title, :category_id, :price, presence: true
+
+  #プルダウンの選択が「--」の時は保存できないようにする
+  validates :category_id, :prefecture_id, :city_id, numericality: { other_than: 1 } 
+
 end
