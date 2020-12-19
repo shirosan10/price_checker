@@ -1,0 +1,97 @@
+<div class="items-sell-contents">
+  <header class="items-sell-header">
+    <%= link_to image_tag('pc-logo-color.png' , size: '185x50'), "/" %>
+  </header>
+  <div class="items-sell-main">
+    <h2 class="items-sell-title">商品の情報を入力</h2>
+    <%= form_with model: @item, local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        商品画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+    <div class="form">
+      <div class="weight-bold-text">
+          カテゴリー
+        <span class="indispensable">必須</span>
+    1 </div>
+      <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+    </div>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        商品名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"商品名（必須 40文字まで)", maxlength:"40" %>
+      <div class="weight-bold-text">
+        型番
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :model_num, class:"items-text", id:"item-name", placeholder:"型番（必須 40文字まで)", maxlength:"40" %>
+      <%# 実装後空でも登録できるようにする %>
+      <div class="weight-bold-text">
+        店舗名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :store_name, class:"items-text", id:"item-name", placeholder:"店舗名（必須 40文字まで)", maxlength:"40" %>
+
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          商品の説明やメモ
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :note, class:"items-text", id:"item-info", placeholder:"商品の説明やメモ（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）10月頃に1000円で購入したLED電球です。色は白。セール価格期間は12月まで" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+      <div class="weight-bold-text">
+        商品（JAN）コード
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_field :jan_code, class:"jan-code-text", id:"jan-code-name", placeholder:"JANコード（必須 20文字まで)", maxlength:"20" %>
+
+    </div>
+    
+    <div class="current-price">
+      <div>
+        <div class="price-content">
+          <div class="price-text">
+            <span>税別価格</span>
+            <span class="indispensable">必須</span>
+          </div>
+          <span class="symbol-yen">¥</span>
+          <%= f.text_field :price, class:"price-input", id:"item-price", placeholder:"例）300" %>
+        </div>
+        <div class="price-content">
+          <span>
+            <span id='add-tax-price'></span>円
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="add-btn-contents">
+      <%= f.submit "出品する" ,class:"add-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+  </div>
+  <% end %>
+
+  <footer class="items-register-footer">
+    <ul class="menu">
+      <li><a href="#">プライバシーポリシー</a></li>
+      <li><a href="#">PRICE／CHECKER利用規約</a></li>
+    </ul>
+    <%= link_to image_tag('pc-logo-color.png' , size: '185x50'), "/" %>
+    <p class="inc">
+      ©︎PRICE/CHEKER,Inc.
+    </p>
+  </footer>
+</div>

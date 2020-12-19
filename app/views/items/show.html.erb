@@ -1,0 +1,87 @@
+<%= render "shared/header" %>
+
+<div class="item-show">
+<% if user_signed_in? && current_user.id == @item.user_id %>
+    <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+     <p class='or-text'>or</p>
+    <%= link_to '削除', item_path(@item.id), method: :delete, class:'item-destroy' %>
+  <div class="item-box">
+    <h2 class="name">
+      <%= @item.title %>
+    </h2>
+    <div class='item-img-content'>
+      <%= image_tag @item.image ,class:"item-box-img" %>
+    </div>
+    <div class="item-price-box">
+      <span class="item-price">
+        <%= "¥#{@item.price}" %>
+      </span>
+      <span class="item-postage">
+        <%= "(税込) #{@item.shipping_fee.name}" %>
+      </span>
+    </div>
+
+    
+
+    <div class="item-explain-box">
+      <span><%= @item.title %></span>
+    </div>
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-item">カテゴリー</th>
+          <td class="detail-value"><%= @item.category.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">型番・品番</th>
+          <td class="detail-value"><%= @item.model_num %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">店舗名</th>
+          <td class="detail-value"><%= @item.store_name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">値段（税別）</th>
+          <td class="detail-value"><%= @item.price %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">商品コード（JAN）</th>
+          <td class="detail-value"><%= @item.jan_code %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">登録（更新）日時</th>
+          <td class="detail-value"><%= @item.daytime %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="comment-box">
+    <form>
+      <textarea class="comment-text"></textarea>
+      <p class="comment-warn">
+        商品の説明やメモを書きましょう。
+        <br>
+        商品の特徴、セール時期、割引が使えるかどうか等。
+      </p>
+      <button type="submit" class="comment-btn">
+        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <span>コメントする<span>
+      </button>
+    </form>
+  </div>
+  <div class="links">
+    <%= link_to '＜ 商品情報一覧', root_path(@item) ,class:"change-item-btn"%>
+
+    <%= link_to 'お気に入り店舗一覧 ＞', "お店一覧"_path(@item) ,class:"change-item-btn"%>
+    
+  </div>
+  <a href="#" class='another-item'><%= @item.category.name %>をもっと見る</a>
+<% else %>
+  <% unless @item.order %>
+    <%= link_to '会員登録に進む', new_user_registration_path(@item) ,class:"item-red-btn"%>
+  <% end %>
+<% end %>
+</div>
+
+<%= render "shared/footer" %>
